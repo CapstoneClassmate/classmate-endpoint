@@ -23,6 +23,8 @@ module.exports = function () {
         }
     });
 
+    let User = mongoose.model('User', UserSchema);
+
     UserSchema.set('toJSON', {getters: true, virtuals: true});
 
     UserSchema.statics.upsertGoogleUser = function(accessToken, refreshToken, profile, cb) {
@@ -32,7 +34,7 @@ module.exports = function () {
         }, function(err, user) {
             // no user was found, lets create a new one
             if (!user) {
-                var newUser = new that({
+                var newUser = new User({
                     fullName: profile.displayName,
                     email: profile.emails[0].value,
                     googleProvider: {
@@ -53,7 +55,30 @@ module.exports = function () {
         });
     };
 
-    mongoose.model('User', UserSchema);
+    let sean = new User({
+        fullName: 'SeanWaters',
+        email: 'skwaters@uark.edu',
+        googleProvider: {
+            id: 'sfdsflk',
+            token: 'dsfasdf'
+        }
+    });
+    let jack = new User({
+        fullName: 'JackSullivan',
+        email: 'jack@uark.edu',
+        googleProvider: {
+            id: 'sfdssdfflk',
+            token: 'dsfsdasdf'
+        }
+    });
+
+    let list = [sean, jack]
+
+    User.insertMany(list).catch(err => {
+        console.log(err)
+    })
+
+    //mongoose.model('User', UserSchema);
 
     return db;
 };
