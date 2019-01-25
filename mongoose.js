@@ -1,15 +1,23 @@
-'use strict';
+/*'use strict';
 
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;*/
+
+const mongoose = require('mongoose');
+let uri = 'mongodb://heroku_szwx2b9z:8hgof8e0ch1md65gktvu0hv2m3@ds129966.mlab.com:29966/heroku_szwx2b9z';
+mongoose.connect(uri, { useNewUrlParser: true});
+let db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+
 var Schema = mongoose.Schema;
 
 module.exports = function () {
-    let uri = 'mongodb://heroku_szwx2b9z:8hgof8e0ch1md65gktvu0hv2m3@ds129966.mlab.com:29966/heroku_szwx2b9z';
+    //let uri = 'mongodb://heroku_szwx2b9z:8hgof8e0ch1md65gktvu0hv2m3@ds129966.mlab.com:29966/heroku_szwx2b9z';
 
-    var db = mongoose.connect(uri, {useNewUrlParser: true});
+    //var db = mongoose.connect(uri, {useNewUrlParser: true});
     mongoose.set('useCreateIndex', true);
 
-    var UserSchema = new Schema({
+    let UserSchema = new Schema({
         email: {
             type: String, required: true,
             trim: true, unique: true,
