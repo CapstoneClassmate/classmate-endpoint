@@ -5,7 +5,6 @@ var Schema = mongoose.Schema;
 
 module.exports = function () {
     let uri = 'mongodb://heroku_szwx2b9z:8hgof8e0ch1md65gktvu0hv2m3@ds129966.mlab.com:29966/heroku_szwx2b9z';
-
     var db = mongoose.connect(uri, {useNewUrlParser: true});
     mongoose.set('useCreateIndex', true);
 
@@ -54,7 +53,7 @@ module.exports = function () {
         });
     };
 
-    return mongoose.model('User', UserSchema);
+    mongoose.model('User', UserSchema);
 
-    //return db;
+    return db;
 };
