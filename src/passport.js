@@ -8,8 +8,8 @@ var config = require('./config');
 
 module.exports = function () {
     passport.use(new GoogleTokenStrategy({
-            clientID: config.googleAuth.clientID,
-            clientSecret: config.googleAuth.clientSecret
+            clientID: config.googleAuthConfig.clientID,
+            clientSecret: config.googleAuthConfig.clientSecret
         },
         function (accessToken, refreshToken, profile, done) {
             User.upsertGoogleUser(accessToken, refreshToken, profile, function(err, user) {

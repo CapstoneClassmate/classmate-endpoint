@@ -2,12 +2,10 @@
 
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var config = require('./config');
 
 module.exports = function () {
-    //let uri = 'mongodb://heroku_szwx2b9z:8hgof8e0ch1md65gktvu0hv2m3@ds129966.mlab.com:29966/heroku_szwx2b9z';
-    let uri = 'mongodb://localhost:27017/social-auth-example';
-
-    var db = mongoose.connect(uri, {useNewUrlParser: true});
+    var db = mongoose.connect(config.getMongoURI(), {useNewUrlParser: true, dbName: 'social-auth-example'});
     mongoose.set('useCreateIndex', true);
 
     var UserSchema = new Schema({

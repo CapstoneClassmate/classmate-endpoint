@@ -5,7 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var cors = require('cors');
-var index = require('./routes/index');
+var index = require('./routes/auth');
+var healthController = require('./routes/health');
 
 var app = express();
 
@@ -29,5 +30,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/v1/', index);
+app.use(healthController);
 
 module.exports = app;

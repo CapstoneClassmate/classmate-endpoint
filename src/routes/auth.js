@@ -7,7 +7,7 @@ var request = require('request');
 require('../passport')();
 
 router.route('/auth/google')
-    .post(passport.authenticate('google-token', {session: false}), function(req, res, next) {
+    .post(passport.authenticate('google-token', { session: false }), function (req, res, next) {
         if (!req.user) {
             return res.send(401, 'User Not Authenticated');
         }
