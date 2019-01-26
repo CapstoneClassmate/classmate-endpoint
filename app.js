@@ -9,10 +9,6 @@ var index = require('./routes/index');
 
 var app = express();
 
-/*app.get('/', function (req, res) {
-    res.render('index', {});
-  });*/
-
 var corsOption = {
     origin: true,
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',

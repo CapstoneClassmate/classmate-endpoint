@@ -5,7 +5,8 @@ var Schema = mongoose.Schema;
 
 module.exports = function () {
     let uri = 'mongodb://heroku_szwx2b9z:8hgof8e0ch1md65gktvu0hv2m3@ds129966.mlab.com:29966/heroku_szwx2b9z';
-    var db = mongoose.connect(uri, {useNewUrlParser: true});
+    //let uri = 'mongodb://localhost:27017/social-auth-example';
+    var db = mongoose.connect(uri, {useNewUrlParser: true});//.then(() =>  console.log('connection successful')).catch((err) => console.error(err));
     mongoose.set('useCreateIndex', true);
 
     var UserSchema = new Schema({
@@ -23,8 +24,6 @@ module.exports = function () {
         }
     });
 
-    let User = mongoose.model('User', UserSchema);
-
     UserSchema.set('toJSON', {getters: true, virtuals: true});
 
     UserSchema.statics.upsertGoogleUser = function(accessToken, refreshToken, profile, cb) {
@@ -34,7 +33,7 @@ module.exports = function () {
         }, function(err, user) {
             // no user was found, lets create a new one
             if (!user) {
-                var newUser = new User({
+                var newUser = new that({
                     fullName: profile.displayName,
                     email: profile.emails[0].value,
                     googleProvider: {
@@ -55,30 +54,7 @@ module.exports = function () {
         });
     };
 
-    let sean = new User({
-        fullName: 'SeanWaters',
-        email: 'skwaters@uark.edu',
-        googleProvider: {
-            id: 'sfdsflk',
-            token: 'dsfasdf'
-        }
-    });
-    let jack = new User({
-        fullName: 'JackSullivan',
-        email: 'jack@uark.edu',
-        googleProvider: {
-            id: 'sfdssdfflk',
-            token: 'dsfsdasdf'
-        }
-    });
-
-    let list = [sean, jack]
-
-    User.insertMany(list).catch(err => {
-        console.log(err)
-    })
-
-    //mongoose.model('User', UserSchema);
+    mongoose.model('User', UserSchema);
 
     return db;
 };
