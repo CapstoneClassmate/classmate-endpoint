@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "pretest": "eslint --ignore-path .gitignore .",
-    "start": "node ./bin/www"
+    "start": "nodemon --ignore node_modules/ ./bin/www"
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",
@@ -17,6 +17,7 @@
     "jsonwebtoken": "^8.4.0",
     "mongoose": "^5.4.6",
     "morgan": "~1.9.0",
+    "nodemon": "^1.18.9",
     "passport": "^0.4.0",
     "passport-google-token": "^0.1.2",
     "request": "^2.88.0",
