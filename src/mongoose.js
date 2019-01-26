@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 var config = require('./config');
 
 module.exports = function () {
-    var db = mongoose.connect(config.getMongoURI(), {useNewUrlParser: true, dbName: 'social-auth-example'});
+    var db = mongoose.connect(config.getMongoURI(), {useNewUrlParser: true, dbName: 'users'});
     mongoose.set('useCreateIndex', true);
 
     var UserSchema = new Schema({

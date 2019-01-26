@@ -5,7 +5,7 @@ let googleAuthConfig = {
 };
 
 let getMongoURI = () => {
-    return process.env.MONGO_URL || "mongodb://localhost:27017/";
+    return process.env.MONGODB_URI || "mongodb://localhost:27017/";
 }
 
 module.exports = { googleAuthConfig, getMongoURI };
