@@ -1,2 +1,1 @@
 # classmate-endpoint
-# RIP GigaBitch
