@@ -1,7 +1,6 @@
 let googleAuthConfig = {
-    clientID: '865538622102-s2h3194vt7nlk789msp0mgi9g5gpgmoa.apps.googleusercontent.com',
-    clientSecret: 'Lr8F8475ZdC-DO98yBstoCUU',
-    callbackURL: process.env.BASE_URL || 'http://localhost:4000/auth/google/callback',
+    clientID: process.env.Google-ClientID || '865538622102-s2h3194vt7nlk789msp0mgi9g5gpgmoa.apps.googleusercontent.com',
+    clientSecret: process.env.Google-ClientSecret || 'Lr8F8475ZdC-DO98yBstoCUU'
 };
 
 let getMongoURI = () => {
