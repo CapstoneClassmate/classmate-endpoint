@@ -1,6 +1,6 @@
 let googleAuthConfig = {
-    clientID: process.env.Google-ClientID || '865538622102-s2h3194vt7nlk789msp0mgi9g5gpgmoa.apps.googleusercontent.com',
-    clientSecret: process.env.Google-ClientSecret || 'Lr8F8475ZdC-DO98yBstoCUU'
+    clientID: process.env.Google_ClientID || '865538622102-s2h3194vt7nlk789msp0mgi9g5gpgmoa.apps.googleusercontent.com',
+    clientSecret: process.env.Google_ClientSecret || 'Lr8F8475ZdC-DO98yBstoCUU'
 };
 
 let getMongoURI = () => {
