@@ -5,6 +5,7 @@ var Schema = mongoose.Schema;
 var config = require('./config');
 
 module.exports = function () {
+    console.log("Look here! The mongoDBURL is :", config.getMongoURI());
     var db = mongoose.connect(config.getMongoURI(), {useNewUrlParser: true, dbName: 'users'});
     mongoose.set('useCreateIndex', true);
 
